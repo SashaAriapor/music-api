@@ -47,10 +47,7 @@ module.exports = class Application {
         });
     }
     createRoutes(){
-        this.#app.get("/", (req, res, next) => {
-            return res.json({
-                message : "Hello World :))))"
-            })
-        })
+        const { AllRoutes } = require("./router/router");
+        this.#app.use("/", AllRoutes);
     }
 }

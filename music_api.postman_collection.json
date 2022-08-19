@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "67b3de97-861a-463a-be6a-793fdccf1e22",
+		"name": "music_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"sashaAriapor1\",\n    \"email\":\"SashaAriapor1@gmail.com\",\n    \"password\":\"\",\n    \"age\": \"600\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5500/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"sashaAriapor1\",\n    \"password\": \"123456\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5500/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "autoLogin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "autorization.token",
+								"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhc2hhQXJpYXBvciIsImlhdCI6MTY2MDg1MzQxNiwiZXhwIjoxNjYxNDU4MjE2fQ.ee3Yu_CU-ltGBKPUkkPpfhw_M3gF4o4oortO49w51VQ\"",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:5500/user/profile",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"user",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhc2hhQXJpYXBvciIsImlhdCI6MTY2MDg1MzQxNiwiZXhwIjoxNjYxNDU4MjE2fQ.ee3Yu_CU-ltGBKPUkkPpfhw_M3gF4o4oortO49w51VQ\"",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
