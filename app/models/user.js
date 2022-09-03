@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
     password: { type: String, required: true },
     name: { type: String, default: "user"},
     age: { type: Number, required: true },
-    profile: { type: String, default: "../../public/defualts/defualt_user.png" },
+    profile_image: { type: String, default: "./defualts/defualt_user.png" },
     bio: { type: String, default: "" },
     musics: { type: [mongoose.Types.ObjectId], default: [] },
     fallowers: { type: [mongoose.Types.ObjectId], default: [] },

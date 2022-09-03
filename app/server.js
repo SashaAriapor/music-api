@@ -41,7 +41,6 @@ module.exports = class Application {
             const message = error?.message || "internal Server Error :(";
             return res.json({
                 status,
-                success: false,
                 message
             })
         });

@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"sashaAriapor1\",\n    \"email\":\"SashaAriapor1@gmail.com\",\n    \"password\":\"\",\n    \"age\": \"600\"\n}",
+							"raw": "{\n    \"username\": \"sashaAriapor\",\n    \"email\":\"SashaAriapor@gmail.com\",\n    \"password\":\"123456\",\n    \"age\": \"19\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -37,13 +37,20 @@
 					"response": []
 				},
 				{
-					"name": "Login",
+					"name": "login",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhc2hhQXJpYXBvciIsImlhdCI6MTY2MDg1MzQxNiwiZXhwIjoxNjYxNDU4MjE2fQ.ee3Yu_CU-ltGBKPUkkPpfhw_M3gF4o4oortO49w51VQ\"",
+								"type": "default",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"sashaAriapor1\",\n    \"password\": \"123456\" \n}",
+							"raw": "{\n    \"username\": \"sashaAriapor\",\n    \"password\": \"123456\" \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -63,15 +70,61 @@
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"item": [
+				{
+					"name": "editProfile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhc2hhQXJpYXBvciIsImlhdCI6MTY2MTYyNTczNCwiZXhwIjoxNjYyMjMwNTM0fQ.BFKtCdmnqGVLgJ_iWh3cNMdi2ectczGVh2k0jQRYlIs",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sasha\",\n    \"bio\": \"I,m NodeJs Developer\"                                                     \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5500/user/profile",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"user",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "authorization",
+									"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhc2hhQXJpYXBvciIsImlhdCI6MTY2MDkzODY2OCwiZXhwIjoxNjYxNTQzNDY4fQ.5T-HxL69C2K9q0FlzDkO8rTdWpqlXhDD4lQwZtqqSAE",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
 				},
 				{
-					"name": "autoLogin",
+					"name": "getProfile",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
-								"key": "autorization.token",
-								"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhc2hhQXJpYXBvciIsImlhdCI6MTY2MDg1MzQxNiwiZXhwIjoxNjYxNDU4MjE2fQ.ee3Yu_CU-ltGBKPUkkPpfhw_M3gF4o4oortO49w51VQ\"",
+								"key": "authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhc2hhQXJpYXBvciIsImlhdCI6MTY2MTYyNTczNCwiZXhwIjoxNjYyMjMwNTM0fQ.BFKtCdmnqGVLgJ_iWh3cNMdi2ectczGVh2k0jQRYlIs",
 								"type": "default"
 							}
 						],
@@ -91,6 +144,44 @@
 									"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhc2hhQXJpYXBvciIsImlhdCI6MTY2MDg1MzQxNiwiZXhwIjoxNjYxNDU4MjE2fQ.ee3Yu_CU-ltGBKPUkkPpfhw_M3gF4o4oortO49w51VQ\"",
 									"disabled": true
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editProfileImage",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhc2hhQXJpYXBvciIsImlhdCI6MTY2MjIzNTU1NSwiZXhwIjoxNjYyODQwMzU1fQ.x17wrQVcASpdbSCeWKlPGTTD6zFjxXg7A78RZENG4zc",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/sasha/Documents/music/public/upload/sashaAriapor/profile/1661988962952.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/user/profile-image",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"user",
+								"profile-image"
 							]
 						}
 					},
