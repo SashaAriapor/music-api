@@ -1,5 +1,6 @@
 const { body } = require("express-validator");
 const { UserModel } = require("../../models/user");
+const { ageCalculator } = require("../../modules/ageCalculator");
 function registerValidator() {
     return [
         body("username").custom(async (value, ctx) => {
@@ -34,17 +35,19 @@ function registerValidator() {
             }
             return true
         }),
-        body("age").custom((value, ctx) => {
-            if (!value) {                
-                throw "age field can,t empty"
+        body("dateOfBirth").custom((value, ctx) => {
+            const userYear = ageCalculator(value);
+            const userYearInt = parseInt(userYear);
+            if (userYearInt < 0){
+                throw "You are not born yet, When you were born and turned 16 years old you can register!";
             }
-                            if (value > 99) {
-                    throw "Your age is lie"
-                }
-                if (value < 12) {
-                    throw "your are child now"
-                }
-                return true
+            if (userYearInt < 16 ) {
+                throw "You are still a child!, You cant Register";
+            }
+            if (userYearInt > 99) {
+                throw "You are fooling us >:("
+            }
+            return true
         })
     ]
 }

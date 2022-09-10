@@ -7,14 +7,14 @@ class AuthController{
     async register (req, res, next){        
         try {
             const result = validationResult(req);
-            const { username, email, password, age } = req.body;
+            const { username, email, password, dateOfBirth } = req.body;
             const hashed_password = hashString(password);
             if (Object.keys(result.errors).length == 0) {
                 const user = await UserModel.create({
                     username,
                     password: hashed_password,
                     email,
-                    age       
+                    dateOfBirth       
                 })
                 res.json(user)
             } else {

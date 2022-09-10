@@ -5,7 +5,6 @@ const UserSchema = new mongoose.Schema({
     email: { type: String, required: true, uniqe:true },
     password: { type: String, required: true },
     name: { type: String, default: "user"},
-    age: { type: Number, required: true },
     profile_image: { type: String, default: "./defualts/defualt_user.png" },
     bio: { type: String, default: "" },
     musics: { type: [mongoose.Types.ObjectId], default: [] },
@@ -14,6 +13,7 @@ const UserSchema = new mongoose.Schema({
     Playlists: { type: [mongoose.Types.ObjectId], default: [] },
     Likes: { type: [mongoose.Types.ObjectId], default: [] },
     roles: { type: [String], default : ["USER"] },
+    dateOfBirth: { type: String, required: true },
     token: { type: String, default: "",}
 })
 

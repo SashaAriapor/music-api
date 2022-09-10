@@ -20,7 +20,6 @@ class UserController {
         try {
             const data = req.body;
             const userID = req.user._id;
-            console.log(userID);
             const fields = ["bio", "name"]; 
             const BadReq = ["", " ", null, undefined, 0, -1, NaN, [], {}];
             Object.entries(data).forEach(([key, value]) => {
@@ -28,9 +27,7 @@ class UserController {
                 if(!fields.includes(key)) delete data[key];
                 if(BadReq.includes(value)) delete data[key];
             })
-            console.log(data);
-            const result = await UserModel.updateOne({_id: userID}, {$set : data});
-            console.log(result);
+            const result = await UserModel.updateOne({_id: userID}, {$set : data})
             if(result.modifiedCount > 0){
                 return res.status(200).json({
                     status : 200,
@@ -47,10 +44,17 @@ class UserController {
         try {
             const result = validationResult(req);
             if (Object.keys(result.errors).length == 0) {
+                const nowProfileImageUser = req.user.profile_image;
                 const userID = req.user._id;
                 const username = req.user.username;
                 const imagePath = `./upload/${username}/profile/${path.basename(req?.file?.path)}`;
+                if (nowProfileImageUser.startsWith("./upload")){
+                    const nowProfileImageUserPath = path.join(__dirname, "..", "..", "..", "public",nowProfileImageUser.slice(2))
+                    fs.unlinkSync(nowProfileImageUserPath);
+                    console.log("1");
+                }   
                 const resultUpdate = await UserModel.updateOne({ _id: userID }, { $set: { profile_image: imagePath } });
+                console.log(2);
                 if(resultUpdate.matchedCount > 0){
                     return res.status(200).json({
                         status: 200,
