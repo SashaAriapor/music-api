@@ -22,8 +22,7 @@ class UserController {
             const userID = req.user._id;
             const fields = ["bio", "name"]; 
             const BadReq = ["", " ", null, undefined, 0, -1, NaN, [], {}];
-            Object.entries(data).forEach(([key, value]) => {
-                console.log(data);              
+            Object.entries(data).forEach(([key, value]) => {         
                 if(!fields.includes(key)) delete data[key];
                 if(BadReq.includes(value)) delete data[key];
             })
@@ -51,10 +50,8 @@ class UserController {
                 if (nowProfileImageUser.startsWith("./upload")){
                     const nowProfileImageUserPath = path.join(__dirname, "..", "..", "..", "public",nowProfileImageUser.slice(2))
                     fs.unlinkSync(nowProfileImageUserPath);
-                    console.log("1");
                 }   
                 const resultUpdate = await UserModel.updateOne({ _id: userID }, { $set: { profile_image: imagePath } });
-                console.log(2);
                 if(resultUpdate.matchedCount > 0){
                     return res.status(200).json({
                         status: 200,
