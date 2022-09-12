@@ -71,6 +71,30 @@ class UserController {
             next(error);
         }
     }
+    async deleteProfileImage(req, res, next) {
+        try {
+            const user = req.user;
+            const userID = req.user._id;
+            const userProfileImage = user.profile_image;
+            if (!userProfileImage.startsWith("./defualts")) {
+                const defualtProfile = "./defualts/defualt_user.png" 
+                const userImageProfilePath = path.join(__dirname, "..", "..", "..", "public",userProfileImage.slice(2));
+                const resultDelete = await UserModel.updateOne({ _id: userID }, { $set: { profile_image: defualtProfile } });
+                if (resultDelete.modifiedCount > 0 ) {
+                    fs.unlinkSync(userImageProfilePath);
+                    return res.status(200).json({
+                        status: 200,
+                        succsess: true,
+                        message: "the delete profile image is successfuly"
+                    })
+                }
+                throw { status: 400, succsess: false, message: "the delete user profile is not successfuly" };
+            }
+            throw { status: 400, succsess: false, message: "you dont have any profile" };
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 module.exports = {

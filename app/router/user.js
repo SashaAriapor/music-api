@@ -8,6 +8,7 @@ const router = require("express").Router()
 router.get("/profile", checkLogin, UserController.getProfile);
 router.post("/profile", checkLogin, UserController.editProfile);
 router.post("/profile-image", checkLogin, uploader("profile").single("image"),  imagevalidator(), UserController.uploadProfileImage);
+router.delete("/profile-image", checkLogin, UserController.deleteProfileImage);
 
 module.exports = {
     userRoutes: router
