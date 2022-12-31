@@ -27,5 +27,5 @@ class MusicVedioController {
 }
 
 module.exports = {
-    musicVedioController: new MusicVedioController()
+    MusicVedioController: new MusicVedioController()
 }

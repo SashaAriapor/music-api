@@ -10,8 +10,11 @@ module.exports = class Application {
     }
     ConfigApplication(){
         const path = require("path");
-        this.#app.use(this.#express.json());
-        this.#app.use(this.#express.urlencoded({ extended: true }));
+        const bodyParser = require("body-parser");
+        this.#app.use(bodyParser.json());
+        this.#app.use(bodyParser.urlencoded({
+            extended: true
+        }));
         this.#app.use(this.#express.static(path.join(__dirname, "..", "public")));
     }
     createServer(PORT){
