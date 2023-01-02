@@ -1,5 +1,6 @@
 const { body } = require("express-validator");
 const path = require("path");
+const { MusicModel } = require("../../models/music");
 function musicCoverValidator() {
     return [
         body("cover").custom((value, {req}) => {
@@ -31,5 +32,5 @@ function musicMp3Validator() {
 
 module.exports = {
     musicCoverValidator,
-    musicMp3Validator
+    musicMp3Validator,
 }

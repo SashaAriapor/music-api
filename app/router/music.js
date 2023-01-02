@@ -6,7 +6,7 @@ const { uploaderFile } = require("../modules/uploader");
 const router = require("express").Router()
 
 router.post("/add", checkLogin, uploaderFile("songs").single("music"), musicMp3Validator(), MusicController.add);
-
+router.get("/listen/:id", checkLogin, MusicController.listen);
 
 
 
